@@ -15,6 +15,12 @@ class AddAreasTable extends Migration
         Schema::create('areas', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->integer('judge_id')->unsigned();
+            $table->integer('category_id')->unsigned();
+            $table->integer('competitor_id')->unsigned();
+            $table->foreign('judge_id')->references('id')->on('judges')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
+            $table->foreign('competitor_id')->references('id')->on('competitors')->onDelete('cascade');
             $table->timestamps();
         });
     }

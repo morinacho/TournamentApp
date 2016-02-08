@@ -19,8 +19,7 @@ class AddJudgesTable extends Migration
             $table->string('graduation');
             $table->integer('register')->unsigned()->unique(); //Matricula de dan
             $table->integer('judge_register')->unsigned()->unique(); //marticula de juez internacional
-            $table->integer('area_id')->unsigned();
-            $table->foreing('area_id')->reference('id')->on('areas')->onDelete('cascade');
+            $table->string('country');
             $table->timestamps();
         });
     }
