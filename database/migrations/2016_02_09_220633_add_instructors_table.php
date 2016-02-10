@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddCategoriesTable extends Migration
+class AddInstructorsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,9 +12,13 @@ class AddCategoriesTable extends Migration
      */
     public function up()
     {
-        Schema::create('categories', function (Blueprint $table) {
+        Schema::create('instructors', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
+            $table->string('email')->unique();
+            $table->integer('phone')->unsigned();
+            $table->string('register')->unique(); //numero de matricula de cinturones negros
+            $table->string('country');
             $table->timestamps();
         });
     }
@@ -26,6 +30,6 @@ class AddCategoriesTable extends Migration
      */
     public function down()
     {
-        Schema::drop('categories');
+        Schema::drop('instructors');
     }
 }

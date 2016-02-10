@@ -26,6 +26,9 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web']], function () {
-    //
+Route::group(['middleware' => ['web'], 'prefix' => 'area'], function(){
+    Route::get('view/{id}', [
+    	'uses'	=> 'TestController@view',
+    	'as'	=> 'areaView'
+    ]);
 });

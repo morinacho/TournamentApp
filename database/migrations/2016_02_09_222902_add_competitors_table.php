@@ -19,11 +19,13 @@ class AddCompetitorsTable extends Migration
             $table->string('sex');
             $table->float('weight')->unsigned();
             $table->float('height')->unsigned();
-            $table->string('graduation');                   // referido al cinturon
+            $table->string('graduation');                  // referido al cinturon
             $table->string('country');
-            $table->integer('register')->unsigned()->unique();          //numero de matricula de cinturones negros
+            $table->string('register')->unique();          //numero de matricula de cinturones negros
+            
             $table->integer('instructor_id')->unsigned(); 
             $table->integer('category_id')->unsigned();        //Categorias de competencias
+
             $table->foreign('instructor_id')->references('id')->on('instructors')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();

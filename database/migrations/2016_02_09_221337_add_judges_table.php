@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddInstructorsTable extends Migration
+class AddJudgesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -12,16 +12,21 @@ class AddInstructorsTable extends Migration
      */
     public function up()
     {
-        Schema::create('instructors', function (Blueprint $table) {
+        Schema::create('judges', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
             $table->string('email')->unique();
-            $table->integer('phone')->unsigned();
-            $table->string('register')->unique(); //numero de matricula de cinturones negros
+            $table->string('graduation');   //Grado de Dan
+            $table->string('register')->unique(); //Matricula de dan
+            $table->string('judge_register')->unique(); //marticula de juez internacional
             $table->string('country');
+
+            $table->integer('area_id')->unsigned();
+
+            $table->foreign('area_id')->references('id')->on('areas')->onDelete('cascade');
+
             $table->timestamps();
         });
-
     }
 
     /**
@@ -31,6 +36,6 @@ class AddInstructorsTable extends Migration
      */
     public function down()
     {
-        Schema::drop('instructors');
+        Schema::drop('judges');
     }
 }

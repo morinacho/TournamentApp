@@ -10,4 +10,9 @@ class Instructor extends Model
     protected $fillable = [
     	'name', 'email', 'phone', 'register', 'country'
     ];
+
+    public function competitors()
+    {
+    	return $this->hasMany('App\Competitor');
+    }
 }

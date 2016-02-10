@@ -12,4 +12,13 @@ class Competitor extends Model
     	'graduation', 'country', 'register', 'instructor_id', 
     	'category_id'
     ];
+
+    public function instructor()
+    {
+    	return $this->belongsTo('App\Instructor');
+    }
+    public function category()
+    {
+    	return $this->belongsTo('App\Category');
+    } 
 }

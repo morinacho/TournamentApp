@@ -6,9 +6,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Judge extends Model
 {
-    $judge = "judges";
-    $fillable = [
+    protected $judge = "judges";
+    protected $fillable = [
     	'name', 'email', 'graduation', 'register', 
-    	'judge_register', 'country'
+    	'judge_register', 'country', 'area_id'
     ];
+
+    public function area()
+    {
+    	return $this->belongsTo('App\Area');
+    }
 }
