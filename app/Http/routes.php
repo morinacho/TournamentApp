@@ -26,9 +26,13 @@ Route::get('/', function () {
 |
 */
 
-Route::group(['middleware' => ['web'], 'prefix' => 'area'], function(){
-    Route::get('view/{id}', [
-    	'uses'	=> 'TestController@view',
-    	'as'	=> 'areaView'
-    ]);
+Route::group(['middleware' => ['web'], 'prefix' => 'register'], function(){
+	Route::resource('instructors', 'InstructorController');
+
+	Route::resource('competitors', 'CompetitorController');
+	Route::get('competitors/{id}/view', [
+			'uses'		=> 'CompetitorController@view',
+			'as'		=> 'register.competitors.view'
+	]);
+
 });
